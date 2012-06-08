@@ -18,6 +18,7 @@ public class TypeChecker<T> {
 		return tCollection(tSimple(clazz));
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static <T> TypeChecker<Collection<T>> tCollection(TypeChecker<T> elementChecker) {
 		return new CollectionTypeChecker(Collection.class, elementChecker);
 	}
@@ -32,6 +33,7 @@ public class TypeChecker<T> {
 		return tList(tSimple(clazz));
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static <T> TypeChecker<List<T>> tList(TypeChecker<T> elementChecker) {
 		return new CollectionTypeChecker(List.class, elementChecker);
 	}
@@ -41,6 +43,7 @@ public class TypeChecker<T> {
 		return tSet(tSimple(clazz));
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static <T> TypeChecker<Set<T>> tSet(TypeChecker<T> elementChecker) {
 		return new CollectionTypeChecker(Set.class, elementChecker);
 	}
@@ -50,6 +53,7 @@ public class TypeChecker<T> {
 		return tQueue(tSimple(clazz));
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static <T> TypeChecker<Queue<T>> tQueue(TypeChecker<T> elementChecker) {
 		return new CollectionTypeChecker(Queue.class, elementChecker);
 	}
@@ -67,6 +71,7 @@ public class TypeChecker<T> {
 		return tMap(keyChecker, tSimple(valueChecker));
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static <K, V> TypeChecker<Map<K, V>> tMap(TypeChecker<K> keyChecker, TypeChecker<V> valueChecker) {
 		return new MapTypeChecker(Map.class, keyChecker, valueChecker);
 	}
