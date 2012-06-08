@@ -5,8 +5,11 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import static typecheckertest.TypeChecker.*;
 
 import org.junit.Test;
@@ -28,24 +31,26 @@ public class TypeCheckerTest {
 
 	@Test(expected = ClassCastException.class)
 	public void testFailure1() throws Exception {
-		List<Map<String, List<Integer>>> source = new ArrayList<Map<String,List<Integer>>>();
-
-		@SuppressWarnings("unchecked")
-		final List<String> unsafeSource = (List<String>)(List<?>) source;
-		unsafeSource.add("Hi there, I break your program!");
+		List<String> source = new ArrayList<String>();
+		source.add("Hi there, I break your program!");
 
 		checker.check((Object) source);
 	}
 
 	@Test(expected = ClassCastException.class)
 	public void testFailure2() throws Exception {
-		List<Map<String, List<Integer>>> source = new ArrayList<Map<String,List<Integer>>>();
-		final HashMap<String, List<Integer>> map = new HashMap<String, List<Integer>>();
+		List<Map<String, List<Object>>> source = new ArrayList<Map<String,List<Object>>>();
+		final HashMap<String, List<Object>> map = new HashMap<String, List<Object>>();
 
-		@SuppressWarnings("unchecked")
-		final List<Integer> unsafeList = (List<Integer>)(List<?>)Arrays.asList(1, 2, 3, "Hi there, I break your program!");
-		map.put("random key", unsafeList);
+		map.put("random key", Arrays.<Object>asList(1, 2, 3, "Hi there, I break your program!"));
 		source.add(map);
+
+		checker.check((Object) source);
+	}
+
+	@Test(expected = ClassCastException.class)
+	public void testFailure3() throws Exception {
+		Set<Map<String, List<Integer>>> source = new HashSet<Map<String,List<Integer>>>();
 
 		checker.check((Object) source);
 	}
