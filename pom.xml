@@ -6,11 +6,6 @@
   <name>typecheckertest</name>
   <dependencies>
   	<dependency>
-  		<groupId>org.spout</groupId>
-  		<artifactId>spoutapi</artifactId>
-  		<version>dev-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
   		<groupId>junit</groupId>
   		<artifactId>junit</artifactId>
   		<version>4.10</version>
