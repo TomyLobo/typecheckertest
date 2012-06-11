@@ -1,4 +1,4 @@
-package typecheckertest;
+package org.spout.api.util.typechecker;
 
 import java.util.Map;
 

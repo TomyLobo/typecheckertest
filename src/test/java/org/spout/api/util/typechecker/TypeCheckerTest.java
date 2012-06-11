@@ -1,4 +1,4 @@
-package typecheckertest;
+package org.spout.api.util.typechecker;
 
 import static org.junit.Assert.*;
 
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static typecheckertest.TypeChecker.*;
+import static org.spout.api.util.typechecker.TypeChecker.*;
 
 import org.junit.Test;
 
